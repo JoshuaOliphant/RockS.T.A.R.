@@ -10,8 +10,8 @@ def chat_interface():
     return render_template('langui.html')
 
 
-@app.route('/ask_gpt', methods=['POST'])
-def ask_gpt():
+@app.route('/ask_star', methods=['POST'])
+def ask_star():
     question = request.form.get('question')
     app.logger.info(f"question: {question}")
 
