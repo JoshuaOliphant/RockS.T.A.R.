@@ -1,8 +1,8 @@
 from flask import Flask, request, render_template
-from chat import Chatbot
+from service import Service
 
 app = Flask(__name__)
-chatbot = Chatbot()
+service = Service()
 
 
 @app.route('/')
@@ -15,11 +15,7 @@ def ask_star():
     question = request.form.get('question')
     app.logger.info(f"question: {question}")
 
-    # Use the chatbot to get the response
-    chatbot.create_message(question)
-    run_created = chatbot.create_run()
-    chatbot.wait_for_run_completion(run_created)
-    messages = chatbot.list_messages()
+    messages = service.submit_question(question)
 
     # Extract the assistant's answer from the messages
     answer = next((m.content for m in messages if m.role == 'assistant'), None)

@@ -1,22 +1,25 @@
 import logging
 import os
 import openai
-from rich.console import Console
 from logconfig import setup_logging
 
 setup_logging()
 logger = logging.getLogger(__name__)
 
 
-class Chatbot:
+class OpenAI_API:
 
     def __init__(self):
         openai.api_key = os.getenv("OPENAI_API_KEY")
-        self.assistant = openai.beta.assistants.create(
-          name="S.T.A.R. interviewing assistant",
-          instructions="""You are a chatbot that interviews candidates for a  job. Your interview style is to use S.T.A.R. (Situation, Task, Action, Reasoning) to guide the candidate through a conversation. You should provide helpful feedback to the candidate.""",
-          model="gpt-4-1106-preview")
+        self.assistant = self.create_assistant()
         self.thread = openai.beta.threads.create()
+
+    def create_assistant(self):
+        assistant = openai.beta.assistants.create(
+            name="S.T.A.R. interviewing assistant",
+            instructions="""You are a chatbot that interviews candidates for a  job. Your interview style is to use S.T.A.R. (Situation, Task, Action, Reasoning) to guide the candidate through a conversation. You should provide helpful feedback to the candidate.""",
+            model="gpt-4-1106-preview")
+        return assistant
 
     def create_message(self, user_input):
         message = openai.beta.threads.messages.create(
@@ -47,8 +50,3 @@ class Chatbot:
             thread_id=self.thread.id
         )
         return messages
-
-
-if __name__ == "__main__":
-    chatbot = Chatbot()
-    chatbot.chat()
