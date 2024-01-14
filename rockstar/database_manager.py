@@ -1,6 +1,6 @@
 from datetime import datetime
 from sqlalchemy.orm import sessionmaker
-from models import Assistant, Base, Threads
+from rockstar.models import Assistant, Base, Threads
 
 
 class DatabaseManager:

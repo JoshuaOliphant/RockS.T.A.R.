@@ -1,7 +1,7 @@
 import logging
 import os
 import openai
-from logconfig import setup_logging
+from rockstar.logconfig import setup_logging
 
 setup_logging()
 logger = logging.getLogger(__name__)

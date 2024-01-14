@@ -1,26 +1,19 @@
 [tool.poetry]
-name = "python-template"
+name = "RockS.T.A.R."
 version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+description = "A web application for practicing S.T.A.R. interviews with AI"
+authors = ["Joshua Oliphant <joshua.oliphant@hey.com>"]
+readme = "README.md"
+packages = [{include = "rockstar"}]
 
 [tool.poetry.dependencies]
-python = ">=3.10.0"
-openai = "^1.1.1"
-rich = "^13.6.0"
-flask = "^3.0.0"
-sqlalchemy = "^2.0.23"
+python = "^3.12"
+Flask = "^3.0.0"
+openai = "^1.7.2"
+sqlalchemy = "^2.0.25"
+rich = "^13.7.0"
 
-[tool.pyright]
-# https://github.com/microsoft/pyright/blob/main/docs/configuration.md
-useLibraryCodeForTypes = true
-exclude = [".cache"]
-
-[tool.ruff]
-# https://beta.ruff.rs/docs/configuration/
-select = ['E', 'W', 'F', 'I', 'B', 'C4', 'ARG', 'SIM']
-ignore = ['W291', 'W292', 'W293']
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

@@ -1,7 +1,7 @@
 import os
-from database_manager import DatabaseManager
+from rockstar.database_manager import DatabaseManager
 from sqlalchemy import create_engine
-from openai_api import OpenAI_API
+from rockstar.openai_api import OpenAI_API
 
 
 class Service:
@@ -11,7 +11,7 @@ class Service:
         self.openai_api = OpenAI_API()
         if self.assistant is None:
             self.assistant = self.openai_api.create_assistant()
-            self.database_manager.save_assistant(assistant)
+            self.database_manager.save_assistant(self.assistant)
         self.thread = self.database_manager.get_thread()
         if self.thread is None:
             self.thread = self.openai_api.create_thread()
