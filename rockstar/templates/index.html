@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex flex-col justify-between" style="height: 80vh;">
+    <!-- Chat area for messages -->
+    <div class="bg-white shadow p-6 rounded-lg overflow-auto">
+        <!-- Welcome message -->
+        <div class="mb-4">
+            <h2 class="text-xl font-semibold">Welcome to Your Interview Practice Platform</h2>
+            <p>Welcome to your interactive interview practice platform! Here, you'll have the opportunity to sharpen your interviewing skills using the S.T.A.R. (Situation, Task, Action, Result) method. Begin by describing the type of interview you're preparing for, and we'll guide you through a tailored practice session. Whether you're aiming for a role in tech, marketing, or any other field, our AI assistant is here to help you articulate your experiences and achievements effectively. Let's ace that interview!</p>
+        </div>
+        <!-- Chat messages -->
+        <div id="chat-area" class="space-y-2">
+            <!-- Dynamically loaded chat messages will appear here -->
+        </div>
+    </div>
+    <!-- Input form for user messages -->
+    <form id="chat-form" method="POST" action="{{ url_for('rockstar.start_session') }}" class="mt-4">
+        <input type="text" name="message" placeholder="Type your message here..." required class="rounded p-2 border-gray-300 flex-grow">
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Send</button>
+    </form>
+</div>
+{% endblock %}
